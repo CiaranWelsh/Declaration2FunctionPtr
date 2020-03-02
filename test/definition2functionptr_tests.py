@@ -3,7 +3,7 @@ import os
 import site
 
 site.addsitedir(os.path.dirname(os.path.dirname(__file__)))
-from definition2funcptr.declaration2functionptr import Declaration
+from declaration2funcptr.declaration2functionptr import Declaration
 
 
 class DefinitionTests1(unittest.TestCase):
@@ -86,6 +86,15 @@ class DefinitionTests6(DefinitionTests1):
     expected_method_name = 'gf_moveNetworkToFirstQuad'
     expected_arg_type_list = ['gf_layoutInfo*', 'double', 'double']
     expected_func_ptr = 'typedef void gf_moveNetworkToFirstQuad(gf_layoutInfo*,double,double);'
+
+
+class DefinitionTests7(DefinitionTests1):
+    signature = '_GraphfabExport gf_SBMLModel gf_SBMLModel_new();'
+    expected_exporter_symbol = '_GraphfabExport'
+    expected_return_type = 'gf_SBMLModel'
+    expected_method_name = 'gf_SBMLModel_new'
+    expected_arg_type_list = []
+    expected_func_ptr = 'typedef gf_SBMLModel gf_SBMLModel_new();'
 
 
 if __name__ == '__main__':

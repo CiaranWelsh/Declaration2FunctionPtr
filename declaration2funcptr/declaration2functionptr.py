@@ -33,6 +33,9 @@ class Declaration:
     def get_arg_types(self):
         match = re.findall('(?:^\S*\s*unsigned \S*|^\S*\s*const \S*|^\S*\s*)\S*\s*\S*(?=\()\((.*)\);', self._decl)
         assert len(match) == 1
+        # for when we have 0 arguments
+        if match[0] == '':
+            return match
         matches = match[0].split(',')
         matches = [i.strip() for i in matches]
         types = []
@@ -49,3 +52,9 @@ class Declaration:
     def to_func_ptr(self):
         method_args = ','.join(self.arg_types)
         return f'typedef {self.return_type} {self.method_name}({method_args});'
+
+    def __str__(self):
+        return f'Declaration({self._decl})'
+
+    def __repr__(self):
+        return self.__str__()

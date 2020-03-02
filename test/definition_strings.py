@@ -1,4 +1,4 @@
-definitions = """
+declarations = """
 _GraphfabExport void gf_freeSBMLModel(gf_SBMLModel* lo);
 _GraphfabExport gf_SBMLModel* gf_loadSBMLbuf(const char* buf);
 _GraphfabExport gf_SBMLModel* gf_loadSBMLfile(const char* file);
@@ -154,3 +154,16 @@ _GraphfabExport unsigned long gf_arrowheadNumStyles();
 _GraphfabExport void gf_arrowheadSetStyle(gf_specRole role, int style);
 _GraphfabExport int gf_arrowheadGetStyle(gf_specRole role);
 """
+
+from declaration2funcptr.declaration2functionptr import Declaration
+
+declarations = declarations.split('\n')
+declarations = [i.strip() for i in declarations]
+declarations = [i for i in declarations if i != '']
+print(len(declarations))
+
+for i in declarations:
+    print(i)
+    d = Declaration(i)
+    # print(d)
+    # print(d.to_func_ptr())

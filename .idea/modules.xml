@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/..//Declaration2FunctionPtr/../../Definition2FunctionPtr/.idea/Declaration2FunctionPtr.iml" filepath="$PROJECT_DIR$/..//Declaration2FunctionPtr/../../Definition2FunctionPtr/.idea/Declaration2FunctionPtr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Declaration2FunctionPtr.iml" filepath="$PROJECT_DIR$/.idea/Declaration2FunctionPtr.iml" />
     </modules>
   </component>
 </project>
