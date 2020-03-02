@@ -184,14 +184,16 @@ class Declaration:
     def get_arg_types(self):
         match = re.findall('(?:^\S*\s*unsigned \S*|^\S*\s*const \S*|^\S*\s*)\S*\s*\S*(?=\()\((.*)\);', self.decl)
         assert len(match) == 1
-        print(match)
         matches = match[0].split(',')
+        matches = [i.strip() for i in matches]
         types = []
-        for i in match:
+        for i in matches:
+            print(i)
             # remove the variable name from the string
             i = i.rsplit(' ')[:-1]
             i = ' '.join(i)
             match = re.findall('(const\s*\S*)|(unsigned\s*\S*)|(\S*)\s*\S*', i)
+            print('m', match)
             match = [i for i in match if i != ('','','')]
             assert len(match) == 1
             types.append([i for i in match[0] if i != ''][0])

@@ -1,11 +1,12 @@
 import unittest
 import os
 import site
+
 site.addsitedir(os.path.dirname(os.path.dirname(__file__)))
 from definition2funcptr.declaration2functionptr import Declaration
 
-class DefinitionTests1(unittest.TestCase):
 
+class DefinitionTests1(unittest.TestCase):
     signature = '_GraphfabExport int gf_arrowheadGetStyle(gf_specRole role);'
     expected_exporter_symbol = '_GraphfabExport'
     expected_return_type = 'int'
@@ -35,8 +36,8 @@ class DefinitionTests1(unittest.TestCase):
         symb = d.get_arg_types()
         self.assertEqual(self.expected_arg_type_list, symb)
 
-class DefinitionTests2(DefinitionTests1):
 
+class DefinitionTests2(DefinitionTests1):
     signature = '_GraphfabExport void gf_freeSBMLModel(gf_SBMLModel* lo);'
     expected_exporter_symbol = '_GraphfabExport'
     expected_return_type = 'void'
@@ -45,7 +46,6 @@ class DefinitionTests2(DefinitionTests1):
 
 
 class DefinitionTests3(DefinitionTests1):
-
     signature = '_GraphfabExport gf_SBMLModel* gf_loadSBMLbuf(const char* buf);'
     expected_exporter_symbol = '_GraphfabExport'
     expected_return_type = 'gf_SBMLModel*'
@@ -54,7 +54,6 @@ class DefinitionTests3(DefinitionTests1):
 
 
 class DefinitionTests4(DefinitionTests1):
-
     signature = '_GraphfabExport unsigned int gf_canvGetWidth(gf_canvas* c);'
     expected_exporter_symbol = '_GraphfabExport'
     expected_return_type = 'unsigned int'
@@ -62,8 +61,20 @@ class DefinitionTests4(DefinitionTests1):
     expected_arg_type_list = ['gf_canvas*']
 
 
+class DefinitionTests5(DefinitionTests1):
+    signature = '_GraphfabExport const char* gf_getSBMLwithLayoutStr(gf_SBMLModel* m, gf_layoutInfo* l);'
+    expected_exporter_symbol = '_GraphfabExport'
+    expected_return_type = 'const char*'
+    expected_method_name = 'gf_getSBMLwithLayoutStr'
+    expected_arg_type_list = ['gf_SBMLModel*', 'gf_layoutInfo*']
 
+
+class DefinitionTests6(DefinitionTests1):
+    signature = '_GraphfabExport void gf_moveNetworkToFirstQuad(gf_layoutInfo* l, double x_disp, double y_disp);'
+    expected_exporter_symbol = '_GraphfabExport'
+    expected_return_type = 'void'
+    expected_method_name = 'gf_moveNetworkToFirstQuad'
+    expected_arg_type_list = ['gf_layoutInfo*', 'double', 'double']
 
 if __name__ == '__main__':
     pass
-
