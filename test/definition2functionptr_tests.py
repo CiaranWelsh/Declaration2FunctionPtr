@@ -93,8 +93,16 @@ class DefinitionTests7(DefinitionTests1):
     expected_exporter_symbol = '_GraphfabExport'
     expected_return_type = 'gf_SBMLModel'
     expected_method_name = 'gf_SBMLModel_new'
-    expected_arg_type_list = []
+    expected_arg_type_list = ['']
     expected_func_ptr = 'typedef gf_SBMLModel gf_SBMLModel_new();'
+
+class DefinitionTests8(DefinitionTests1):
+    signature = '_GraphfabExport const char* gf_getCurrentLibraryVersion(void);'
+    expected_exporter_symbol = '_GraphfabExport'
+    expected_return_type = 'const char*'
+    expected_method_name = 'gf_getCurrentLibraryVersion'
+    expected_arg_type_list = ['void']
+    expected_func_ptr = 'typedef const char* gf_getCurrentLibraryVersion(void);'
 
 
 if __name__ == '__main__':
