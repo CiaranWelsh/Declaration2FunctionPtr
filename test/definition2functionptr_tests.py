@@ -12,6 +12,7 @@ class DefinitionTests1(unittest.TestCase):
     expected_return_type = 'int'
     expected_method_name = 'gf_arrowheadGetStyle'
     expected_arg_type_list = ['gf_specRole']
+    expected_func_ptr = 'typedef int gf_arrowheadGetStyle(gf_specRole);'
 
     def setUp(self) -> None:
         pass
@@ -36,6 +37,11 @@ class DefinitionTests1(unittest.TestCase):
         symb = d.get_arg_types()
         self.assertEqual(self.expected_arg_type_list, symb)
 
+    def test_get_arg_types(self):
+        d = Declaration(self.signature)
+        actual = d.to_func_ptr()
+        self.assertEqual(self.expected_func_ptr, actual)
+
 
 class DefinitionTests2(DefinitionTests1):
     signature = '_GraphfabExport void gf_freeSBMLModel(gf_SBMLModel* lo);'
@@ -43,6 +49,7 @@ class DefinitionTests2(DefinitionTests1):
     expected_return_type = 'void'
     expected_method_name = 'gf_freeSBMLModel'
     expected_arg_type_list = ['gf_SBMLModel*']
+    expected_func_ptr = 'typedef void gf_freeSBMLModel(gf_SBMLModel*);'
 
 
 class DefinitionTests3(DefinitionTests1):
@@ -51,6 +58,7 @@ class DefinitionTests3(DefinitionTests1):
     expected_return_type = 'gf_SBMLModel*'
     expected_method_name = 'gf_loadSBMLbuf'
     expected_arg_type_list = ['const char*']
+    expected_func_ptr = 'typedef gf_SBMLModel* gf_loadSBMLbuf(const char*);'
 
 
 class DefinitionTests4(DefinitionTests1):
@@ -59,6 +67,7 @@ class DefinitionTests4(DefinitionTests1):
     expected_return_type = 'unsigned int'
     expected_method_name = 'gf_canvGetWidth'
     expected_arg_type_list = ['gf_canvas*']
+    expected_func_ptr = 'typedef unsigned int gf_canvGetWidth(gf_canvas*);'
 
 
 class DefinitionTests5(DefinitionTests1):
@@ -67,6 +76,7 @@ class DefinitionTests5(DefinitionTests1):
     expected_return_type = 'const char*'
     expected_method_name = 'gf_getSBMLwithLayoutStr'
     expected_arg_type_list = ['gf_SBMLModel*', 'gf_layoutInfo*']
+    expected_func_ptr = 'typedef const char* gf_getSBMLwithLayoutStr(gf_SBMLModel*,gf_layoutInfo*);'
 
 
 class DefinitionTests6(DefinitionTests1):
@@ -75,6 +85,8 @@ class DefinitionTests6(DefinitionTests1):
     expected_return_type = 'void'
     expected_method_name = 'gf_moveNetworkToFirstQuad'
     expected_arg_type_list = ['gf_layoutInfo*', 'double', 'double']
+    expected_func_ptr = 'typedef void gf_moveNetworkToFirstQuad(gf_layoutInfo*,double,double);'
+
 
 if __name__ == '__main__':
-    pass
+    unittest.main()
