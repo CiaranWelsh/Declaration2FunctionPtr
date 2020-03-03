@@ -167,8 +167,7 @@ declarations = [i for i in declarations if i != '']
 print(len(declarations))
 
 for i in declarations:
-    # print(i)
+
     d = Declaration(i)
     print(d)
-    # print(d.to_func_ptr())
-    # print(d.)
+    print(d.to_method_format())
