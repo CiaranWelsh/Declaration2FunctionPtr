@@ -2,8 +2,6 @@ import os
 import re
 
 
-
-
 class Declaration:
 
     def __init__(self, definition):
@@ -33,6 +31,7 @@ class Declaration:
     def get_arg_types(self):
         match = re.findall('(?:^\S*\s*unsigned \S*|^\S*\s*const \S*|^\S*\s*)\S*\s*\S*(?=\()\((.*)\);', self._decl)
         assert len(match) == 1
+        print(match)
         # for when we have 0 arguments
         if match[0] == '':
             return match
@@ -44,7 +43,8 @@ class Declaration:
             i = i.rsplit(' ')[:-1]
             i = ' '.join(i)
             match = re.findall('(const\s*\S*)|(unsigned\s*\S*)|(\S*)\s*\S*', i)
-            match = [i for i in match if i != ('','','')]
+            match = [i for i in match if i != ('', '', '')]
+            print('m', match)
             assert len(match) == 1
             types.append([i for i in match[0] if i != ''][0])
         return types

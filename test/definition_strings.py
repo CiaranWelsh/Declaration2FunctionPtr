@@ -153,6 +153,10 @@ _GraphfabExport int gf_arrowheadStyleIsFilled(int style);
 _GraphfabExport unsigned long gf_arrowheadNumStyles();
 _GraphfabExport void gf_arrowheadSetStyle(gf_specRole role, int style);
 _GraphfabExport int gf_arrowheadGetStyle(gf_specRole role);
+_GraphfabExport void gf_doLayoutAlgorithm(fr_options opt, gf_layoutInfo* l);
+_GraphfabExport void gf_doLayoutAlgorithm2(fr_options opt, gf_network* n, gf_canvas* c);
+_GraphfabExport void gf_getLayoutOptDefaults(fr_options* opt);
+_GraphfabExport void gf_layout_setStiffness(fr_options* opt, double k);
 """
 
 from declaration2funcptr.declaration2functionptr import Declaration
@@ -163,7 +167,8 @@ declarations = [i for i in declarations if i != '']
 print(len(declarations))
 
 for i in declarations:
-    print(i)
+    # print(i)
     d = Declaration(i)
-    # print(d)
+    print(d)
     # print(d.to_func_ptr())
+    # print(d.)
