@@ -165,4 +165,4 @@ print(len(declarations))
 for i in declarations:
     d = Declaration(i)
     # print(d)
-    print(d.to_func_ptr())
+    print(d.to_method_format())
